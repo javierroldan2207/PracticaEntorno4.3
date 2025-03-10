@@ -3,7 +3,7 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.auth.Credencial;
 import com.auth.Usuario;
@@ -23,33 +23,29 @@ class TestUsuario {
 
     @Test
     void testEsPasswordSegura() {
-        assertTrue(usuario.esPasswordSegura(), "La contraseña debería ser segura.");
+        assertTrue(usuario.esPasswordSegura());
     }
 
     @Test
     void testModificarPassword() {
-        assertTrue(usuario.modificarPassword("password123", "newpassword123", "newpassword123"), 
-            "La contraseña debería ser cambiada correctamente.");
+        assertTrue(usuario.modificarPassword("password123", "newpassword123", "newpassword123"));
         
-        assertFalse(usuario.modificarPassword("wrongpassword", "newpassword123", "newpassword123"), 
-            "No debería poder cambiar la contraseña con el viejo password incorrecto.");
+        assertFalse(usuario.modificarPassword("wrongpassword", "newpassword123", "newpassword123"));
         
-        assertFalse(usuario.modificarPassword("password123", "newpassword123", "newpassword124"), 
-            "No debería poder cambiar la contraseña si las nuevas contraseñas no coinciden.");
+        assertFalse(usuario.modificarPassword("password123", "newpassword123", "newpassword124"));
         
-        assertFalse(usuario.modificarPassword("password123", "password123", "password123"), 
-            "No debería poder cambiar la contraseña al mismo valor.");
+        assertFalse(usuario.modificarPassword("password123", "password123", "password123"));
     }
 
     @Test
     void testHacerLogin() {
-        assertTrue(usuario.hacerLogin("juanperez", "password123"), "El login debería ser exitoso con credenciales correctas.");
+        assertTrue(usuario.hacerLogin("juanperez", "password123"));
         
-        assertFalse(usuario.hacerLogin("juanlopez", "password123"), "El login debería fallar con un username incorrecto.");
+        assertFalse(usuario.hacerLogin("juanlopez", "password123"));
         
-        assertFalse(usuario.hacerLogin("juanperez", "wrongpassword"), "El login debería fallar con una contraseña incorrecta.");
+        assertFalse(usuario.hacerLogin("juanperez", "wrongpassword"));
         
-        assertFalse(usuario.hacerLogin("juanperez", "wrongpassword"), "El login debería fallar con una contraseña incorrecta.");
+        assertFalse(usuario.hacerLogin("juanperez", "wrongpassword"));
     }
 
 }

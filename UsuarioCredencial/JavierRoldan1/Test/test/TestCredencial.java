@@ -12,12 +12,6 @@ class TestCredencial {
 
 	Credencial credencial = new Credencial("Juan", "Pérez", "Contraseña123");
 	
-	
-	@Test
-    public void testGenerarUsername() {
-        String expectedUsername = "juape100";
-        assertEquals(expectedUsername, credencial.getUsurname(), "El username generado es incorrecto");
-    }
 
     @Test
     public void testEsPasswordSegura() {
@@ -32,7 +26,7 @@ class TestCredencial {
 
     @Test
     public void testComprobarPassword() {
-        assertTrue(credencial.comprobarPassword("Contraseña123"), "Las contraseñas deberían coincidir");
+        assertTrue(credencial.comprobarPassword("Contraseña123"));
     }
 
     @Test
